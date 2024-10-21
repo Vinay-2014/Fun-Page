@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Balloons</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="emoji-container" id="emoji-container">
+        <div class="background-text">I Gotchuu..... You are always welcome😜</div>
+    </div>
+
+    <script>
+        const emojiContainer = document.getElementById('emoji-container');
+        const emojis = ['😂', '🤣', '😆', '😅', '😜', '😁', '😄'];
+
+        function createFloatingBalloon() {
+            const balloon = document.createElement('span');
+            balloon.className = 'floating-balloon';
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            balloon.textContent = randomEmoji;
+
+            const randomX = Math.random() * 100; // Random horizontal position
+            balloon.style.left = randomX + 'vw';
+            balloon.style.bottom = '0';
+            emojiContainer.appendChild(balloon);
+
+            const duration = Math.random() * 2 + 1; // Range: 1s to 3s
+            balloon.style.animationDuration = duration + 's';
+
+            setTimeout(() => {
+                balloon.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createFloatingBalloon, 100);
+    </script>
+</body>
+</html>
